@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.Random;
 
 @RestController
 public class Controller {
@@ -14,6 +15,13 @@ public class Controller {
         Date date = new Date();
         System.out.println("test" + new Date());
         return date.toString();
+    }
+
+    @GetMapping(value = "/randSleep")
+    public String randSleep() {
+        int random = new Random().nextInt(100) + 100;
+        Thread.sleep(random);
+        return "sleep " + random;
     }
 
     @GetMapping(value = "/test1")
