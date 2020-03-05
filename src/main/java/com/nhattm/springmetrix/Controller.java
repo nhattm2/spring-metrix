@@ -20,7 +20,11 @@ public class Controller {
     @GetMapping(value = "/randSleep")
     public String randSleep() {
         int random = new Random().nextInt(100) + 100;
-        Thread.sleep(random);
+        try {
+            Thread.sleep(random);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return "sleep " + random;
     }
 
